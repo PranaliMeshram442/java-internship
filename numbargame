@@ -1,0 +1,56 @@
+package task;
+import java.util.scanner;
+import java .util.random;
+public class task1{
+public satatic void main (string [] args){
+Scanner scan = new Scanner (System.in);
+Random random = new Random();
+int lowestnum=1;
+int highestnum =100;
+ int secretNumber = random.nextInt(highest_num - lowest_num + 1) + lowest_num;
+        int maxAttempts = 10;
+
+        System.out.println("Welcome to the Number Guessing Game!");
+        System.out.println("I've generated a number between " + lowest_num + " and " + highest_num + ".");
+        System.out.println("Try to guess it within " + maxAttempts + " attempts.");
+
+        int attempts = 0;
+        boolean guessedCorrectly = false;
+
+        while (attempts < maxAttempts) {
+            System.out.print("Enter your guess: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input! Please enter a number between " + lowest_num + " and " + highest_num + ".");
+                scanner.next(); // Clear the invalid input
+                continue;
+            }
+
+            int userGuess = scanner.nextInt();
+            if (userGuess < lowest_num || userGuess > highest_num) {
+                System.out.println("Invalid input! Please enter a number between " + lowest_num + " and " + highest_num + ".");
+                continue;
+            }
+
+            attempts++;
+
+            if (userGuess == secretNumber) {
+                guessedCorrectly = true;
+                break;
+            } else if (userGuess < secretNumber) {
+                System.out.println("Too low! Try a higher number. You have " + (maxAttempts - attempts) + " attempts left.");
+            } else {
+                System.out.println("Too high! Try a lower number. You have " + (maxAttempts - attempts) + " attempts left.");
+            }
+        }
+
+        if (guessedCorrectly) {
+            System.out.println("Congratulations! You guessed the correct number: " + secretNumber + " in " + attempts + " attempts.");
+        } else {
+            System.out.println("Sorry, you've reached the maximum number of attempts.");
+            System.out.println("The secret number was: " + secretNumber);
+        }
+
+        scanner.close();
+    }
+}
+
